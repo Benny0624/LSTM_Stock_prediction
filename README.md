@@ -12,26 +12,29 @@ Stock prediction using PyTorch nn Module
 
 ## 資料
 
-#### Kaggle: https://www.kaggle.com/qks1lver/amex-nyse-nasdaq-stock-histories
+#### Kaggle: 
+https://www.kaggle.com/qks1lver/amex-nyse-nasdaq-stock-histories
 
-#### 資料描述: 資料集包含幾乎所有列於交易所(AMEX, NYSE, and NASDAQ)的每交易日股票交易量、開收盤價、最高及最低價還有還原股價
+#### 資料描述: 
+資料集包含幾乎所有列於交易所(AMEX, NYSE, and NASDAQ)的每交易日股票交易量、開收盤價、最高及最低價還有還原股價
 
-#### Training Data: 取2008金融海嘯之後到2019年4月份之資料，包含科技業: Agilent Technologies、Amazon、Microsoft、IBM；金融業: Citi bank、Golden Sachs、Morgan Stanley、JPMorgan 八家公司
+#### Training Data: 
+取2008金融海嘯之後到2019年4月份之資料，包含科技業: Agilent Technologies、Amazon、Microsoft、IBM；金融業: Citi bank、Golden Sachs、Morgan Stanley、JPMorgan 八家公司
 ![image](https://i.imgur.com/LPpb3J9.png)
      
 ## 前處理
 
-### 正規化:
+#### 正規化:
 
  ![image](https://i.imgur.com/wEPIwco.png)
  
 把資料六個Feature使用sklearn 套件MinMaxScaler正規化到-1和1之間
 
-### 正規化後資料:
+#### 正規化後資料:
 
  ![image](https://i.imgur.com/h95lI9N.png)
  
-### 切分資料:
+#### 切分資料:
 
  ![image](https://i.imgur.com/gWljT1F.png)
  
@@ -39,17 +42,17 @@ Stock prediction using PyTorch nn Module
 
 ## 模型
 
-### 轉換資料格式: 
+#### 轉換資料格式: 
 
 ![image](https://i.imgur.com/PcygCb1.png)
 
 導入所需Packages，後將train 與test資料轉換成torch形式
 
-### 定義模型: 
+#### 定義模型: 
 
 ![image](https://i.imgur.com/whgFnx1.png)
 
 自訂訓練模型lstm_reg，設定第一層使用長短期記憶模型(LSTM)，第二層使用線性層優化時間序列預測，使用MSE計算Loss，Adam做優化器
 
-### 修正: 
+#### 修正: 
 之後因為預測結果出現overfitting之狀況，在LSTM層加入Dropout，還有t.sin()數學轉換，在分析部分會再詳細說明。
