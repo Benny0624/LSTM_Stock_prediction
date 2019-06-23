@@ -87,8 +87,8 @@ IBM:
 
 ![image](https://i.imgur.com/rv41EW4.png)
   
-#### 300epoch
-但是我們覺得用線性轉換後，test資料的趨勢fit的還是不夠好，因此我們決定不做線性轉換而是把epoch調高到300次來觀察test資料的收斂情形:
+#### 300epoch(依各公司收斂情形調整epoch次數)
+但是我們覺得用線性轉換後，test資料的趨勢fit的還是不夠好，因此我們決定不做線性轉換而是把epoch調高到300次(依各公司收斂情形調整epoch次數)來觀察test資料的收斂情形:
 
 Agilent Technologies:
 
@@ -122,6 +122,9 @@ JPMorgan:
 
 ![image](https://i.imgur.com/pe3EzlQ.png)
 
-我們可以看到每間公司在調高epoch之後，test資料的趨勢有很明顯的fit到。因此一開始在50次epoch時，應是學習不夠的原因。
+我們可以看到每間公司在調高epoch之後，test資料的趨勢有很明顯的fit到。
+
+因此一開始在50次epoch時，應是學習不夠的原因。
+
 所以加了dropout(=0.5)和調高epoch讓我們的test資料fit的很好，得到了我們滿意的結果。
 
