@@ -56,3 +56,69 @@ https://www.kaggle.com/qks1lver/amex-nyse-nasdaq-stock-histories
 
 #### 修正: 
 之後因為預測結果出現overfitting之狀況，在LSTM層加入Dropout，還有t.sin()數學轉換，在分析部分會再詳細說明。
+
+## 分析
+
+#### 50epoch
+我們每間公司一開始只進行50次epoch，我們發現train資料fit的非常好，但是test資料卻fit的沒有很好，不管趨勢還是波動都是如此。
+
+我們覺得有可能是overfitting:
+
+以Amzon和IBM為例:
+
+Amzon:
+
+![image](https://i.imgur.com/vRacRJ3.png)
+ 
+IBM:
+ 
+  
+因此我們在LSTM層中加入了dropout(=0.5)，可以看到波動明顯的fit的好很多，但趨勢卻仍然沒有改善，所以我們有將資料進行線性轉換(sin)，test的趨勢有明顯的改善:
+
+
+以Amzon和IBM為例:
+Amzon進行50次epoch，且在LSTM層中加入了dropout(=0.5)和將資料進行線性轉換(sin):
+ 
+  
+IBM進行50次epoch，且在LSTM層中加入了dropout(=0.5)和將資料進行線性轉換(sin):
+ 
+  
+
+
+
+
+
+
+
+但是我們覺得用線性轉換後，test資料的趨勢fit的還是不夠好，因此我們決定不做線性轉換而是把epoch調高到300次來觀察test資料的收斂情形:
+科技業:
+Agilent Technologies:
+ 
+  
+Amazon:
+ 
+ 
+Microsoft:
+ 
+  
+IBM:
+ 
+  
+Citi bank:
+ 
+  
+Golden Sachs:
+ 
+  
+
+
+
+Morgan Stanley:
+ 
+  
+JPMorgan:
+ 
+  
+我們可以看到每間公司在調高epoch之後，test資料的趨勢有很明顯的fit到。因此一開始在50次epoch時，應是學習不夠的原因。
+所以加了dropout(=0.5)和調高epoch讓我們的test資料fit的很好，得到了我們滿意的結果。
+
