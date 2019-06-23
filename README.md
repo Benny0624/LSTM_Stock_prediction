@@ -71,54 +71,57 @@ Amzon:
 ![image](https://i.imgur.com/vRacRJ3.png)
  
 IBM:
- 
-  
+
+![image](https://i.imgur.com/UtiLtyJ.png)
+#### 線性轉換(sin)+50epoch
+
 因此我們在LSTM層中加入了dropout(=0.5)，可以看到波動明顯的fit的好很多，但趨勢卻仍然沒有改善，所以我們有將資料進行線性轉換(sin)，test的趨勢有明顯的改善:
 
-
 以Amzon和IBM為例:
-Amzon進行50次epoch，且在LSTM層中加入了dropout(=0.5)和將資料進行線性轉換(sin):
- 
-  
-IBM進行50次epoch，且在LSTM層中加入了dropout(=0.5)和將資料進行線性轉換(sin):
- 
-  
 
+Amzon:
 
+![image](https://i.imgur.com/P5yJHML.png)
 
-
-
-
-
-但是我們覺得用線性轉換後，test資料的趨勢fit的還是不夠好，因此我們決定不做線性轉換而是把epoch調高到300次來觀察test資料的收斂情形:
-科技業:
-Agilent Technologies:
- 
-  
-Amazon:
- 
- 
-Microsoft:
- 
-  
 IBM:
- 
+
+![image](https://i.imgur.com/rv41EW4.png)
   
+#### 300epoch
+但是我們覺得用線性轉換後，test資料的趨勢fit的還是不夠好，因此我們決定不做線性轉換而是把epoch調高到300次來觀察test資料的收斂情形:
+
+Agilent Technologies:
+
+![image](https://i.imgur.com/fQxvihy.png)
+
+Amazon:
+
+![image](https://i.imgur.com/HSAGZOh.png)
+
+Microsoft:
+
+![image](https://i.imgur.com/hCBlysp.png)
+
+IBM:
+
+![image](https://i.imgur.com/h4Mo7UO.png)
+
 Citi bank:
- 
-  
+
+![image](https://i.imgur.com/f2W0q6f.png)
+
 Golden Sachs:
- 
-  
 
-
+![image](https://i.imgur.com/NrNfvqS.png)
 
 Morgan Stanley:
- 
-  
+
+![image](https://i.imgur.com/TIoo6jM.png)
+
 JPMorgan:
- 
-  
+
+![image](https://i.imgur.com/pe3EzlQ.png)
+
 我們可以看到每間公司在調高epoch之後，test資料的趨勢有很明顯的fit到。因此一開始在50次epoch時，應是學習不夠的原因。
 所以加了dropout(=0.5)和調高epoch讓我們的test資料fit的很好，得到了我們滿意的結果。
 
